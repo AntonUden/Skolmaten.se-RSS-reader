@@ -26,7 +26,7 @@ namespace Skolmat
             InitializeComponent();
             String fURL = getDataFromRegistry("feedURL");
 
-            if(fURL == "NULL")
+            if(fURL == null)
             {
                 Console.WriteLine("adding default registry key");
                 writeDataToRegistry("https://skolmaten.se/backadalsgymnasiet/rss/", "feedURL");
@@ -54,7 +54,6 @@ namespace Skolmat
             for(int i = 0; i < str.Length; i++)
             {
                 string[] numbers = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-                //Console.WriteLine(str.ToArray()[i]);
                 for(int j = 0; j < numbers.Length; j++)
                 {
                     string ts = str.ToArray()[i] + "";
@@ -69,7 +68,8 @@ namespace Skolmat
             {
                 int result = Int32.Parse(intStr);
                 return result;
-            } catch(Exception e)
+            }
+            catch (Exception e)
             {
                 return 0;
             }
@@ -84,7 +84,7 @@ namespace Skolmat
         {
             try
             {
-                return Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\Zeeraa\apps\Skolmat", key, "NULL").ToString();
+                return Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\Zeeraa\apps\Skolmat", key, null).ToString();
             }
             catch (Exception e)
             {
